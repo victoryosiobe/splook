@@ -111,22 +111,22 @@ async function getTokenMetadata(mintAddress) {
 // Display wallet info neatly
 async function checkWallet(address) {
   try {
-    console.log(`\n🔹 Wallet: ${address}`);
-    console.log(`🔗 SOLscan: https://solscan.io/account/${address}`);
+    console.log(`\nWallet: ${address}`);
+    console.log(` | Solscan: https://solscan.io/account/${address}`);
 
     const solBalance = await getSolBalance(address);
-    console.log(`💰 SOL Balance: ${solBalance.toFixed(15)} SOL`);
+    console.log(` | SOL Balance: ${solBalance.toFixed(15)} SOL`);
 
     const tokens = await getTokenAccounts(address);
 
     if (tokens.length === 0) {
-      console.log("🪙 No tokens found.");
+      console.log(" | No tokens found.");
     } else {
-      console.log("\n🎉 Tokens:");
+      console.log("\n | Tokens:");
       for (const [index, token] of tokens.entries()) {
         const { name, symbol } = await getTokenMetadata(token.mint);
         console.log(
-          `  ${index + 1}. Mint: ${token.mint} (${name} - ${symbol})\n     Amount: ${token.amount.toLocaleString()} (${token.decimals} decimals)`,
+          ` | ${index + 1}. Mint: ${token.mint} (${name} - ${symbol})\n   Amount: ${token.amount.toLocaleString()} (${token.decimals} decimals)`,
         );
       }
     }
@@ -136,7 +136,7 @@ async function checkWallet(address) {
 }
 
 // Read wallets from stdin
-console.log("🚀 Enter Solana wallet addresses (Ctrl+C to stop):");
+console.log("Enter Solana wallet addresses (Ctrl+C to stop):");
 rl.on("line", (address) => {
   if (address.trim()) {
     checkWallet(address.trim());
