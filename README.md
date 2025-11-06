@@ -38,7 +38,7 @@ node .
 You'll see:
 
 ```console
-[SPLOOK] Enter Solana wallet addresses (Ctrl+C to stop):
+Enter Solana wallet addresses (Ctrl+C to stop):
 ```
 
 Type or paste Solana addresses, one by one.
